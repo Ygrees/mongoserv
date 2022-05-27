@@ -29,7 +29,9 @@ app.use(
 
 
 app.use('/admin', require("./routes/admin-main-page"))
-app.get('/main', (req, res) => res.render(path.resolve('./front/main.ejs')))
+app.get('/main', (req, res) => {
+    res.render(__dirname+'/front/main.ejs')
+})
 
 
 app.listen(process.env.PORT || 4000)
