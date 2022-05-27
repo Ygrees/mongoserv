@@ -7,6 +7,7 @@ const config = require("./config/db.config");
 const path = require("path");
 const mongoURI = config.url;
 const app = express();
+const port = 3000;
 
 connectDB().then(() => console.log("Database Connected"))
 
