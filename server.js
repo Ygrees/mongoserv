@@ -4,7 +4,7 @@ const MongoDBS = require("connect-mongodb-session")(session);
 const bodyParser = require("body-parser")
 const connectDB = require("./config/db");
 const config = require("./config/db.config");
-const path = require("path");
+
 const mongoURI = config.url;
 const app = express();
 const port = 4000;
