@@ -33,5 +33,5 @@ app.get('/main', (req, res) => res.render(path.resolve('./front/main.ejs')))
 
 
 app.listen(process.env.PORT || 4000)
-console.log(`App listening at http://localhost:${port}`
+console.log(`App listening at http://localhost:${port}/main`
 );
