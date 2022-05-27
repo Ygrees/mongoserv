@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Admin</title>
+<body>
+
+<main>
+    <div class="container">
+        <header class="d-flex justify-content-center py-3">
+            <ul class="nav nav-pills">
+                <li class="nav-item"><a href="/admin" class="nav-link">Create</a></li>
+                <li class="nav-item"><a href="/admin/read" class="nav-link">Read</a></li>
+                <li class="nav-item"><a href="/admin/find" class="nav-link">Find</a></li>
+                <li class="nav-item"><a href="/admin/update" class="nav-link">Update</a></li>
+                <li class="nav-item"><a href="/admin/delete" class="nav-link active" aria-current="page">Delete</a></li>
+            </ul>
+        </header>
+    </div>
+
+</main>
+<main>
+    <div class="container">
+        <div class="col-md-7 col-lg-8">
+            <h4 class="mb-3">Delete</h4>
+            <form action="/admin/delete" class="needs-validation" novalidate method="POST">
+                <div class="row g-3">
+                    <div class="col-sm-6">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="text" class="form-control" name="email" id="email" placeholder="" value=""
+                               required>
+                        <div class="invalid-feedback">
+                            Valid email is required.
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <button class="w-100 btn btn-primary btn-lg" type="submit">Delete</button>
+                <br><br>
+                <div class="row g-3">
+                    <% if(type != null){ %>
+                        <% if(type == 'None'){ %>
+                            <h5 class="mb-3">This user does not exist</h5>
+                        <% } else{ %>
+                            <h5 class="mb-3"><%= type %> <%= name %> successfully deleted!</h5>
+                        <% } %>
+                    <% } %>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+
+    <form action="/admin/logout" method="POST">
+        <button>Logout</button>
+    </form>
+
+
+
+</body>
+</html>

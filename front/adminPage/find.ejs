@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Admin</title>
+</head>
+<body>
+
+<main>
+    <div class="container">
+        <header class="d-flex justify-content-center py-3">
+            <ul class="nav nav-pills">
+                <li class="nav-item"><a href="/admin" class="nav-link">Create</a></li>
+                <li class="nav-item"><a href="/admin/read" class="nav-link">Read</a></li>
+                <li class="nav-item"><a href="/admin/find" class="nav-link active" aria-current="page">Find</a></li>
+                <li class="nav-item"><a href="/admin/update" class="nav-link">Update</a></li>
+                <li class="nav-item"><a href="/admin/delete" class="nav-link">Delete</a></li>
+            </ul>
+        </header>
+    </div>
+
+</main>
+<main>
+    <div class="container">
+        <div class="col-md-7 col-lg-8">
+            <h4 class="mb-3">Find</h4>
+            <form action="/admin/find" class="needs-validation" method="POST">
+                <div class="row g-3">
+                    <div class="col-sm-6">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="text" class="form-control" name="email" id="email" placeholder="" value=""
+                               required>
+                        <div class="invalid-feedback">
+                            Valid email is required.
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <button class="w-100 btn btn-primary btn-lg" type="submit">Find</button>
+                <br><br>
+                <div class="row g-3">
+                    <% if(type === 'Dataminer'){ %>
+                        <h5 class="mb-3">Found <%= type %>: </h5>
+                        <table>
+                            <tr>
+                                <td>Username</td>
+                                <td>Email</td>
+                                <td>Phone</td>
+                                <td>Password (Hashed)</td>
+                            </tr>
+                            <tr>
+                                <td><%= data.username %></td>
+                                <td><%= data.email %></td>
+                                <td><%= data.phone %></td>
+                                <td><%= data.password %></td>
+                            </tr>
+                        </table>
+                    <% } else if(type === 'User'){ %>
+                        <h5 class="mb-3">Found <%= type %>: </h5>
+                        <table>
+                            <tr>
+                                <td>Username</td>
+                                <td>Email</td>
+                                <td>Phone</td>
+                                <td>City</td>
+                                <td>Post Index</td>
+                                <td>Password (Hashed)</td>
+                            </tr>
+                            <tr>
+                                <td><%= data.username %></td>
+                                <td><%= data.email %></td>
+                                <td><%= data.phone %></td>
+                                <td><%= data.city %></td>
+                                <td><%= data.postIndex %></td>
+                                <td><%= data.password %></td>
+                            </tr>
+                        </table>
+                    <% } else if(type === 'Admin'){ %>
+                        <h5 class="mb-3">Found <%= type %>: </h5>
+                        <table>
+                            <tr>
+                                <td>Username</td>
+                                <td>Email</td>
+                                <td>Password (Hashed)</td>
+                            </tr>
+                            <tr>
+                                <td><%= data.username %></td>
+                                <td><%= data.email %></td>
+                                <td><%= data.password %></td>
+                            </tr>
+                        </table>
+                    <% } else if(type == 'x'){ %>
+                        <h5 class="mb-3">This user does not exist</h5>
+                    <% } %>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+
+    <form action="/admin/logout" method="POST">
+        <button>Logout</button>
+    </form>
+
+</body>
+</html>

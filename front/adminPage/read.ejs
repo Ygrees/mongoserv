@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Admin</title>
+</head>
+<body>
+
+<main>
+    <div class="container">
+        <header class="d-flex justify-content-center py-3">
+            <ul class="nav nav-pills">
+                <li class="nav-item"><a href="/admin" class="nav-link">Create</a></li>
+                <li class="nav-item"><a href="/admin/read" class="nav-link active" aria-current="page">Read</a></li>
+                <li class="nav-item"><a href="/admin/find" class="nav-link">Find</a></li>
+                <li class="nav-item"><a href="/admin/update" class="nav-link">Update</a></li>
+                <li class="nav-item"><a href="/admin/delete" class="nav-link">Delete</a></li>
+            </ul>
+        </header>
+    </div>
+</main>
+<main>
+    <div class="container">
+        <div class="col-md-7 col-lg-8">
+            <br>
+            <div>
+                <% if(Array.isArray(sellerData)){ %>
+                    <% if(sellerData.length === 0){ %>
+                        <h5 class="mb-3">No dataminers</h5>
+                    <% } else{ %>
+                        <h5 class="mb-3">Dataminers: </h5>
+                        <table>
+                            <tr>
+                                <td>Username</td>
+                                <td>Email</td>
+                                <td>Phone</td>
+                                <td>Password (Hashed)</td>
+                            </tr>
+
+                            <% for(let i = 0;i < sellerData.length;i++){ %>
+                                <tr>
+                                    <td><%= sellerData[i].username %></td>
+                                    <td><%= sellerData[i].email %></td>
+                                    <td><%= sellerData[i].phone %></td>
+                                    <td><%= sellerData[i].password %></td>
+                                </tr>
+                            <% } %>
+                        </table>
+                    <% } %>
+                <% } %>
+                <br>
+                <% if(Array.isArray(customerData)){ %>
+                    <% if(customerData.length === 0){ %>
+                        <h5 class="mb-3">No user</h5>
+                    <% } else{ %>
+                        <h5 class="mb-3">Result for users: </h5>
+                        <table>
+                            <tr>
+                                <td>Username</td>
+                                <td>Email</td>
+                                <td>Phone</td>
+                                <td>City</td>
+                                <td>Post Index</td>
+                                <td>Password (Hashed)</td>
+                            </tr>
+
+                            <% for(let i = 0;i < customerData.length;i++){ %>
+                                <tr>
+                                    <td><%= customerData[i].username %></td>
+                                    <td><%= customerData[i].email %></td>
+                                    <td><%= customerData[i].phone %></td>
+                                    <td><%= customerData[i].city %></td>
+                                    <td><%= customerData[i].postIndex %></td>
+                                    <td><%= customerData[i].password %></td>
+                                </tr>
+                            <% } %>
+                        </table>
+                    <% } %>
+                <% } %>
+                <br>
+                <% if(Array.isArray(adminData)){ %>
+                    <% if(adminData.length === 0){ %>
+                        <h5 class="mb-3">No admin found</h5>
+                    <% } else{ %>
+                        <h5 class="mb-3">Result for Admins: </h5>
+                        <table>
+                            <tr>
+                                <td>Username</td>
+                                <td>Email</td>
+                                <td>Password (Hashed)</td>
+                            </tr>
+
+                            <% for(let i = 0;i < adminData.length;i++){ %>
+                                <tr>
+                                    <td><%= adminData[i].username %></td>
+                                    <td><%= adminData[i].email %></td>
+                                    <td><%= adminData[i].password %></td>
+                                </tr>
+                            <% } %>
+                        </table>
+                    <% } %>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</main>
+
+    <form action="/admin/logout" method="POST">
+        <button>Logout</button>
+    </form>
+
+</body>
+</html>
